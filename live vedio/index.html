@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCam</title>
+</head>
+<body>
+    <video id="video"></video>
+    <canvas id="canvas"></canvas>
+    <button type="button" onclick="snap();">SNAP</button>
+    <script>
+        var video=document.getElementById('video')
+        var canvas=document.getElementById('canvas')
+        var context=canvas.getContext('2d')
+        navigator.getUserMedia=navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.oGetUserMedia || navigator.msGetUserMedia;
+        navigator.getUserMedia({video:true},webcamFeed,showError);
+
+        function webcamFeed(stream){
+            video.srcObject=stream;
+            video.play();
+        };
+        function showError(e){
+            alert(e.name);
+        };
+        function snap(){
+            canvas.width=video.clientWidth;
+            canvas.height=video.clientHeight;
+            context.drawImage(video,0,0)
+        }
+    </script>
+</body>
+</html>
