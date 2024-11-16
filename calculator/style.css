@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+
+body{
+    margin: 0%;
+    padding: 0%;
+    /* background-color: black; */
+    background: url(ff2.jpeg);
+    /* background-position: center; */
+    background-size: 1300px 700px;
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+    font-family: "Gowun Batang", serif;
+    position: absolute;
+    top: 70%;
+    left: 57%;
+    transform: translateX(-50%)translateY(-50%); 
+   
+    cursor: pointer;
+}
+#digitalclock{
+    color: rgb(47, 255, 0);
+    border: 2px solid rgb(235, 12, 187);
+    border-radius: 100%;
+    box-shadow: 10px 5px 5px rgb(252, 80, 1);
+    background-color: transparent;
+    font-size: 30px;
+    font-weight: 900;
+    text-shadow: 5px 5px 5px rgb(23, 243, 11);
+    /* background: white ; */
+    width: 400px;
+    height: 200px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+    
+
+}

@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+body{
+    font-family: "Nunito Sans", sans-serif;
+}
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+span{
+    color: blue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+}
+.content{
+    background-color: rgb(238, 198, 253);
+    line-height:90% ;
+    visibility: hidden;
+    border: 2px solid red;
+    border-radius: 20px;
+    transform: translateY(40px);
+    transition: all 0.8s ease-in-out;
+    opacity: 0;
+    /* transition: 0.5s ease-in-out ; */
+
+}
+image{
+    background-color: rgb(133, 235, 255);
+    width: 250px;
+    height: 250px;
+}
+
+img{
+    border: 20px solid black;
+    border-radius: 5px;
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+}
+.card:hover .content{
+    visibility: visible;
+    /* transition: 0.5s ease-in-out ; */
+    transform: translateY(0);
+    opacity: 1;
+}

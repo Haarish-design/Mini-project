@@ -1,0 +1,61 @@
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+h1{
+    font-weight: 500;
+    color:aqua;
+}
+.searchbar{
+    max-width: 600px;
+    display: inline-flex;
+
+}
+.searchtext{
+   
+    padding: 10px;
+    outline: none;
+    border: 1.5px solid aqua;
+    border-radius: 5px 0 0 5px ;
+    transition: 0.5s;
+    background-color:rgb(250, 225, 225);
+    transition:1s;
+}
+.searchtext::placeholder{
+    color: rgb(0, 85, 255);
+}
+.searchtext:focus{
+    background-color: white;
+}
+.btnsearch{
+    width: 30px;
+    outline: none;
+    border-radius: 2px;
+    border:1px solid rgb(196, 7, 248);
+    background-color: aqua;
+    cursor: pointer;
+}
+.searchtext:hover{
+
+    background-color: aquamarine;
+    height: 50px;
+    width: 250px;
+    box-shadow: 0 0 15px aqua;
+    font-size: 40px;
+    text-shadow: 2px 2px 9px  rgb(6, 172, 255);
+ 
+}
+.searchtext::placeholder:hover{
+    font-size: 400px;
+}

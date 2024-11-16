@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Booking Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="hicon.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        *{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+}
+body{
+    background-color: aquamarine;
+    max-width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 100px;
+    left: 420px;
+    background: url("hotel.jpeg");
+    color: rgb(16, 16, 16);
+    
+}
+.top{
+
+}
+h2{
+    text-align: center;
+    text-transform: uppercase;
+    padding: 4px;
+    font-size: 25px;
+    font-weight: 600;
+    border: 1px solid black;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.containers{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+    backdrop-filter: blur(3px);
+}
+form{
+    display: flex;
+    flex-direction: column;
+
+}
+
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body{
+height: 100vh;
+width: 100vw;
+display: grid;
+place-items: center;
+}
+.container{
+width: 100px;
+height: 40px;
+background-color: aliceblue;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+border-radius: 100px;
+overflow: hidden;
+position: relative;
+left: 100px;
+top: 10px;
+}
+.border{
+height: 10px;
+width: 100px;
+background: linear-gradient(45deg,#e94cdc,#4c28e4);
+animation-name: rotate;
+animation-duration: 1s;
+animation-iteration-count: infinite;
+animation-timing-function: linear;
+animation-play-state: paused;
+
+}
+@keyframes rotate {
+from{
+    transform: rotate(0deg);
+}
+to{
+    transform: rotate(360deg);
+}
+}
+button{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+width: 85px;
+height: 35px;
+border: none;
+background-color: white;
+border-radius: 35px;
+}
+.container:hover .border{
+animation-play-state: running;
+}
+.end{
+    padding: 10px;
+    color: white;
+    text-justify:auto;
+}
+input{
+    padding: 10px;
+}
+input[type="text"],input[type="email"],input[type="date"],input[type="time"],input[type="tel"]{
+    border: 2px solid rgb(111, 232, 248);
+    border-radius: 5px;
+    font-size: 15px;
+}
+label{
+    font-size: 20px;
+    padding: 3px;
+    color: rgb(12, 12, 12);
+    font-weight: 500;
+}
+        </style>
+</head>
+<body>
+    <div class="containers">
+
+        <h2>Room Bookin Form</h2>
+        <p class="top">Welcome to Our Hotel.Please fill the below information</p>
+        <form action="">
+            <label for="name">Name : </label>
+            <input type="text" class="name" required placeholder="  Username">
+            <label for="email">Email:</label>
+            <input type="email" class="email" required placeholder="Someone@email.com">
+            <label for="Date">Date : </label>
+            <input type="date" class="date" required >
+            <label for="time">Time : </label>
+            <input type="time" class="time" required >
+            <label for="number">Phone Number : </label>
+            <input type="number" class="number" required placeholder="+91 xxxxxxxxx">
+        </form>
+        <p class="end">
+            Thank you for your patience! Please note that all information provided is confidential.
+        </p>
+        <div class="container">
+            <div class="border"></div>
+    <a href="https://www.oyorooms.com" target="_blank"><button >Submit</button></a>
+</div>
+    </div>
+</body>
+</html>

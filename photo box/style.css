@@ -1,0 +1,81 @@
+body{
+    font-family: "Playfair Display", serif;
+    margin: 0%;
+    /* padding: 0%; */
+    background-color: #b9fdfd;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+.card{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background-color:white ;
+    border-radius: 3px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.card::before,
+.card::after{
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 4px;
+    z-index:-1;
+    transition: all 0.5s ease-in-out;
+}
+.card:hover::before{
+    transform: rotate(20deg);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 39px 0px;
+
+}
+.card:hover::after{
+    transform: rotate(10deg);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 39px 0px;
+
+}
+.imgbox{
+    position: absolute;
+    background-color:#b9fdfd;
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    z-index: 2;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0%;
+    left: 0%;
+    
+}
+.card:hover .imgbox{
+    bottom: 80px;
+}
+.details{
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    height: 70px;
+    text-align: center;
+    /* z-index: 0; */
+}
+h2{
+    margin: 0%;
+    padding: 0%;
+    font-weight: 600;
+    color: blue;
+    text-shadow: 1px 1px 4px blue;
+}
+h2 span{
+    color: red;
+    text-shadow: 1px 1px 4px #ff0000;
+}
