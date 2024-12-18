@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash on Delivery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 180vh;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1qQQfZz_NVt-uxz_aPMzOahcb15ZamOuKdg&s'); /* Add your image URL here */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .order-details {
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .order-details h2 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .order-details ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .order-details li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .total-price {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .address-form {
+            margin-top: 20px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .address-form h3 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .address-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .address-form input, .address-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .address-form input:focus, .address-form select:focus {
+            border-color: #28a745;
+        }
+
+        .payment-method {
+            margin-top: 20px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .payment-method h3 {
+            margin: 0 0 10px;
+            font-size: 1.2em;
+        }
+
+        .payment-method p {
+            font-size: 1em;
+            color: #333;
+        }
+
+        .terms {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .terms a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Cash on Delivery (COD)</h1>
+        
+        <div class="order-details">
+            <h2>Your Order Summary</h2>
+            <ul>
+                <li>Product Name: <strong>Product 1</strong></li>
+                <li>Quantity: <strong>2</strong></li>
+                <li>Price per Item: <strong>$15.00</strong></li>
+            </ul>
+            <div class="total-price">
+                Total: <strong>$30.00</strong>
+            </div>
+        </div>
+
+        <!-- Address Form Section -->
+        <div class="address-form">
+            <h3>Enter Delivery Address</h3>
+            <form id="addressForm" onsubmit="return validateForm()">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+
+                <label for="streetAddress">Street Address</label>
+                <input type="text" id="streetAddress" name="streetAddress" placeholder="Enter your street address" required>
+
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="Enter your city" required>
+
+                <label for="postalCode">Postal Code</label>
+                <input type="text" id="postalCode" name="postalCode" placeholder="Enter postal code" required>
+
+                <label for="country">Country</label>
+                <select id="country" name="country" required>
+                    <option value="">Select Country</option>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="IN">India</option>
+                    <!-- Add more countries as needed -->
+                </select>
+
+                <button type="submit" class="btn">Save Address</button>
+            </form>
+        </div>
+
+        <div class="payment-method">
+            <h3>How Cash on Delivery Works</h3>
+            <p>Pay for your order when it's delivered to your doorstep. Simply hand over the total amount in cash to the delivery person.</p>
+        </div>
+
+        <div class="terms">
+            <p>By choosing Cash on Delivery, you agree to our <a href="#">Terms & Conditions</a>.</p>
+        </div>
+
+        <a href="#" class="btn">Confirm Order</a>
+    </div>
+
+    <script>
+        function validateForm() {
+            const fullName = document.getElementById('fullName').value;
+            const streetAddress = document.getElementById('streetAddress').value;
+            const city = document.getElementById('city').value;
+            const postalCode = document.getElementById('postalCode').value;
+            const country = document.getElementById('country').value;
+
+            if (!fullName || !streetAddress || !city || !postalCode || !country) {
+                alert("Please fill in all fields.");
+                return false; 
+            }
+            alert("Address saved successfully!");
+            return true; 
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR SCANNER</title>
+    <link rel="stylesheet" href="qr.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: URL('https://img.freepik.com/premium-photo/qr-code-background_721243-4065.jpg');
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */  
+    background-color: #773c3c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    text-align: center;
+    background-color: rgb(209, 130, 130);
+    padding: 35px;  
+    border-radius: 15px;
+    box-shadow: 0 0 100px rgba(185, 6, 6, 0.1);
+    font-style: inherit;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+h2 {
+    margin-bottom: 0px;
+    font-size: 20px;
+}
+
+.image-container {
+    margin-top: 30px;
+}
+
+#unique-image {
+    max-width: 100%;
+    max-height: 500px;
+    border-radius: 5px;
+;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QR SCANNER</h1>
+        <div class="image-container">
+            <img src="my qr.jpg" alt="Unique Image" id="unique-image">
+        <h2>scan&pay</h2>    
+        </div>
+    </div>
+    <script>
+        // List of images to view
+const images = [
+    'image1.jpg',
+    'image2.jpg',
+    'image3.jpg',
+    // Add more images here
+];
+
+let currentImageIndex = 0;
+
+// Function to display the image based on the index
+function displayImage(index) {
+    const imageElement = document.getElementById('image');
+    imageElement.src = images[index];
+}
+
+// Function to move to the next image
+function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    displayImage(currentImageIndex);
+}
+
+// Function to move to the previous image
+function previousImage() {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    displayImage(currentImageIndex);
+}
+
+// Initially display the first image
+displayImage(currentImageIndex);
+
+    </script>
+</body>
+</html>

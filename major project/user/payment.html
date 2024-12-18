@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="payment.css">
+    <style>
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://cdn.pixabay.com/photo/2021/03/19/13/15/bill-6107551_640.png'); /* Replace with your desired background image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+/* Container */
+.payment-container {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+.payment-header h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.payment-header p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Payment Options */
+.payment-options {
+    margin-bottom: 20px;
+}
+
+.payment-option {
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-option img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+/* Form */
+.payment-form {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.payment-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.payment-form button {
+    width: 100%;
+    padding: 15px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.payment-form button:hover {
+    background-color: #45a049;
+}
+
+/* Hidden forms */
+#paypal-form, #google-pay-form {
+    display: none;
+}
+
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <div class="payment-header">
+            <h2>Complete Your Payment</h2>
+            <p>Please choose a payment method and enter your details.</p>
+        </div>
+
+        <div class="payment-options">
+            <button class="payment-option" onclick="selectPaymentMethod('credit-card')">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAwFBMVEX///8lO4AXm9cVMHuOlrUAl9YlNHsegr4AI3X6+/2NxecRmtcyotkAldUAktQWntoAIHUZM3wAJ3gmMXissccNLHrl5+4AHHMkO4AmL3cfN34PLXpga5rZ2+XQ0t/BxNVpdJ95gqiZyukqSInt9vtLqdzY6vagpr+Ciq1JWI+Vm7kvQoTIzNpUYZTp6/A6S4hqiLO4vM8Rd7VzfaUmaaW01+4pXptwuOIqUZDQ5vSu1O02SIdEp9sAFHEiVpZ3uuPR4Wa5AAAEaElEQVR4nO3bjVKbQBQF4CwRkojEROJPUGtrtImxta1a/1rr+79VMbGOyL0EdndmL/R8T7BnFvawC7RaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABNN1orYT4dfdlxPVJNs0G7jP3t7e7j2fyD6+FqGKrykvbWcK12U7lbIeGz9u7BoesxV7LTrZgwncndjxeuh13B0XblhEoNByPX4y5vtK+RUKnuQc/1yMuatbUSqqGqy5V6kOglVEm3JgvOuWbA1KAeEQf6CVW3DtW4Y5IwGdZgufmiUxavhl9dj381zbL4Z2vqOsBKa5pl8WJvV3xnaJfFi+TAdYJVDMpiaSB9P9XdM0yYnLmOUOyi+s4iN4mye//DlnHC4SfXIQqNjOpwqSu69g3LYmH7yHWKIh+rnNIwZF+m3wzrcMl1iiJVj6FIA8HPNRcmO4tXW4JL30JZpPYFH0v9MNtZvGjPXefgzS2URbqYzlzn4F1ZKIs04ZXrHDw7ZSE5oYVnNiW68i+s1KFqy70P7ZSFGn53HYT1w85VGlyeuk7CsVMWKuiEG66jMOyUhYo9zxca8cxKWajJZhpR5oVq5ZlNJddpQi86dp2GcGJlZ6HiznNCr//ZdZ68QztloRYBPYmrjZ2yCK6XCb3op+tAOVMrZTEOlwG90HMdKOeTjbJIbl6mUOIkWimLsf8voBeKawzzE/03d+FiOT1xHSmrZ2Vn8Sag5z+4zpRloyzGnUzCW9eZsrS+98rKXKPyVtOp8UNbcpcJmN6Isl7SGJdFMtkMswkjWUvNV9NX+Ofee9G961AZidkL7mCSCygsoWFZxH82pSc8NCr88SURUFhCk7IIJhEV0ItE7RH1yyJQ5ASKa4uZXlkkcZqPCSis8XXKIgjimw6XT9xTG98VASkeq7vrNB6bT9qTd489hgouO5TI2yyM50nbPfF/kowXUXK8sDCdJ24HXPBxcPFE8YSdYvAfB080E4ah60xZ/J8kN5oJI1HrTMHHwe92teWnUNqJMHsXBh29hNJO9fmdRdDRCijuzUxBWaxsBYq8t2t8WQQ6F6nAN6R2y8LfELWpWGA/Dk40ykLeJdqyWhZh/8l1GsovNiG3u2Un0Bd1dPGqoCwqJfT7666j0PjfDuMKZRFG0bqoDdMb1coiJPh+FN3K2kxk8H+SEGURbuSc3q4/CHtKe4cvC+KgV9YZYUnsnyRUWcg6nCipUln4rkerg339S5RF+Nv1aDXwf5LEfn4KZZ2ClsN/HEyUhS9t51cG/yfJOZFQcOux/uOySKiykLf3W439k6QxZcH+o/4flEXU9LIYN6QsDh+5hE0pi9Z80M3bj+NxU8oi1ctpPYXkC9BalgXtlD6/qGVZ0PLP3IuykHgWquekT0+hyMNQLff5KqxtWdCO6au0nmVBeqIT1rUsCBv0UtqcsujRC02DyuIznbCWOwtG6FP6zVlKWyfH64TmrKQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANr+AtbYXHYB9448AAAAAElFTkSuQmCC" alt="PayPal" class="payment-logo">
+                Pay with PayPal
+            </button>
+            <button class="payment-option" onclick="selectPaymentMethod('google-pay')">
+                <img src="data:image/jpeg;base64,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" alt="Google Pay" class="payment-logo">
+                Pay with Google Pay
+            </button>
+            <button class="payment-option" onclick="selectPaymentMethod('credit-card')">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBpUTuKoYc1SOpE2vAAwUgiRrdTGXk3AckFA&s" alt="Credit Card" class="payment-logo">
+                Pay with Credit Card
+            </button>
+            <a href="cod.html"><button class="payment-option" onclick="selectPaymentMethod('Cash on Delivery')">
+                <img src="https://i.pinimg.com/736x/ab/b5/2c/abb52c0ac3fb3c96ebde3207c8992a02.jpg" alt="Cash on Delivery" class="payment-logo">
+                Cash on Delivery
+            </button></a>
+        </div>
+
+        <div class="payment-form" id="credit-card-form">
+            <h3>Credit Card Payment</h3>
+            <form id="payment-form">
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" name="card-number" placeholder="Enter your card number" required>
+
+                <label for="expiry-date">Expiry Date</label>
+                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="CVV" required>
+
+                <button type="submit" id="submit-btn">Pay Now</button>
+            </form>
+        </div>
+
+        <div class="payment-form" id="paypal-form" style="display: none;">
+            <h3>Pay with PayPal</h3>
+            <p>You will be redirected to PayPal to complete the payment.</p>
+            <button onclick="redirectToPaypal()">Proceed to PayPal</button>
+        </div>
+
+        <div class="payment-form" id="google-pay-form" style="display: none;">
+            <h3>Google Pay</h3>
+            <p>You will be redirected to Google Pay to complete the payment.</p>
+            <a href="qr.html"><button onclick=>Proceed to Google Pay</button></a>
+        </div>
+    </div>
+
+    <script src="payment.js"></script>
+    <script>
+function selectPaymentMethod(method) {
+    // Hide all payment forms first
+    document.getElementById('credit-card-form').style.display = 'none';
+    document.getElementById('paypal-form').style.display = 'none';
+    document.getElementById('google-pay-form').style.display = 'none';
+    
+    // Show the selected payment method form
+    if (method === 'credit-card') {
+        document.getElementById('credit-card-form').style.display = 'block';
+    } else if (method === 'paypal') {
+        document.getElementById('paypal-form').style.display = 'block';
+    } else if (method === 'google-pay') {
+        document.getElementById('google-pay-form').style.display = 'block';
+    }
+}
+
+function redirectToPaypal() {
+    // For simulation purposes, we just show an alert
+    alert('Redirecting to PayPal...');
+    // In a real app, you'd redirect to PayPal URL:
+    // window.location.href = 'https://www.paypal.com';
+}
+
+function redirectToGooglePay() {
+    // For simulation purposes, we just show an alert
+    alert('Redirecting to Google Pay...');
+    // In a real app, you'd redirect to Google Pay URL:
+    // window.location.href = 'https://pay.google.com';
+}
+
+// Form validation (for Credit Card payment)
+document.getElementById('payment-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const cardNumber = document.getElementById('card-number').value;
+    const expiryDate = document.getElementById('expiry-date').value;
+    const cvv = document.getElementById('cvv').value;
+
+    // Basic validation
+    if (!cardNumber || !expiryDate || !cvv) {
+        alert('Please fill in all fields');
+        return;
+    }
+
+    alert('Payment successful with Credit Card!');
+});
+
+    </script>
+</body>
+</html>

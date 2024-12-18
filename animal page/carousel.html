@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="carousel.css">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <style>
+        .btn{
+            display: flex;
+            justify-content: center;
+            margin: 10px;
+            margin-bottom: 10px;
+            
+        }
+        .btn button{
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+            border-bottom: 5px solid rgb(235, 145, 61);
+            border-right: 5px solid rgb(0, 255, 51);
+            border-top: 5px solid rgb(255, 0, 162);
+            border-left: 5px solid rgb(0, 162, 255);
+            font-size: 20px;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-weight: 500;
+            box-shadow: 4px 4px 4px ;
+            -webkit-box-shadow: 10px 0px 43px 30px rgba(87,235,200,1);
+-moz-box-shadow: 10px 0px 43px 30px rgba(87,235,200,1);
+box-shadow: 10px 0px 43px 30px rgba(87,235,200,1);
+animation: bounce-top 0.9s both;
+        }
+        .btn button:hover{
+            animation: color-change-3x 4s linear infinite alternate both;
+            color: white;
+        }
+        @keyframes color-change-3x {
+  0% {
+    background: #19dcea;
+  }
+  50% {
+    background: #b22cff;
+  }
+  100% {
+    background: #ea2222;
+  }
+}
+
+       
+@keyframes bounce-top {
+  0% {
+    transform: translateY(-45px);
+    animation-timing-function: ease-in;
+    opacity: 1;
+  }
+  24% {
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(-24px);
+    animation-timing-function: ease-in;
+  }
+  65% {
+    transform: translateY(-12px);
+    animation-timing-function: ease-in;
+  }
+  82% {
+    transform: translateY(-6px);
+    animation-timing-function: ease-in;
+  }
+  93% {
+    transform: translateY(-4px);
+    animation-timing-function: ease-in;
+  }
+  25%,
+  55%,
+  75%,
+  87% {
+    transform: translateY(0px);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateY(0px);
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+}
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div class="slider-item active">
+            <img src="freepik__upload__9975.jpeg" alt="slider1"></div>
+        <div class="slider-item">
+            <img src="freepik__upload__28557.jpeg" alt="slider2"></div>
+        <div class="slider-item">
+            <img src="freepik__upload__782.jpeg" alt="slider3"></div>
+        <div class="slider-item">
+            <img src="freepik__upload__59882.jpeg" alt="slider4"></div>
+        <div class="slider-item">
+            <img src="pexels-george-desipris-792381.jpg" alt="slider5"></div>
+        <div class="slider-item">
+            <img src="pexels-pixabay-144234.jpg" alt="slider6"></div>
+        <div class="slider-item">
+            <img src="pexels-pixabay-45246.jpg" alt="slider7"></div>
+        <div class="slider-item">
+            <img src="pexels-pixabay-86405.jpg" alt="slider8"></div>
+        <div class="slider-item">
+            <img src="freepik-export-20241128153500QqGS.jpeg" alt="slider9"></div>
+
+    <div class="slider-btns">
+        <button id="btn-previous"><ion-icon name="arrow-dropleft"></ion-icon></button>
+        <button id="btn-forward">
+            <ion-icon name="arrow-dropright"></ion-icon>
+        </button>
+    </div>
+    <div class="dots">
+        <!-- <div class="dot dot-active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div> -->
+</div>
+<div class="btn">
+   <a href="log.html"> <button >Login</button></a>
+</div>
+    <script src="script.js"></script>
+    <script>
+        let slideposition=0;
+const sliders=document.querySelectorAll('.slider-item')
+const totalslider=sliders.length
+const btnprev=document.querySelector('#btn-previous')
+const btnnext=document.querySelector('#btn-forward')
+btnprev.addEventListener('click',function(){
+    prevslide();
+})
+btnnext.addEventListener('click',function(){
+    nextslide();
+})
+
+function updateposition(){
+    sliders.forEach(slide=>{
+        slide.classList.remove('active')
+        slide.classList.add('hidden')
+    })
+    sliders[slideposition].classList.add('active')
+    dots.forEach(dot=>{
+        dot.classList.remove('dot-active')
+    })
+    dots[slideposition].classList.add('dot-active')
+
+}
+function prevslide(){
+    if(slideposition==0)
+        {
+            slideposition=totalslider-1;
+        }
+        else{
+            slideposition--;
+    
+        }
+    updateposition()
+}
+function nextslide(){
+    if(slideposition==totalslider-1)
+    {
+        slideposition=0;
+    }
+    else{
+        slideposition++;
+
+    }
+    updateposition()
+}
+
+
+const dotcontainer=document.querySelector('.dots')
+
+sliders.forEach(slide=>{
+    const dot=document.createElement('div');
+    dot.classList.add('dot')
+    dotcontainer.appendChild(dot)
+})
+const dots=document.querySelectorAll('.dot')
+dots[slideposition].classList.add('dot-active')
+
+dots.forEach((dot,index)=>{
+    dot.addEventListener('click',function(){
+        slideposition=index;
+        updateposition()
+    })
+})
+// setInterval(()=>{
+// if(slideposition==totalslider-1){
+//     slideposition=0;
+// }
+// else{
+//     slideposition++;
+// }
+// updateposition()
+// },3000)
+    </script>
+</body>
+</html>

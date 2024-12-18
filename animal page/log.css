@@ -1,0 +1,221 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: "Poppins", serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(img1.jpg) ;
+    background-position:left;
+    background-size: cover;
+}
+header{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    padding: 20px 100px;
+    /* background-color: red;/ */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 22;
+}
+.logo{
+    font-size: 2em;
+    color: white;
+    user-select: none;
+}
+.navigation a{
+position: relative;
+font-size: 1.1em;
+color: white;
+text-decoration: none;
+font-weight: 500;
+margin-left: 40px;
+}
+.btn-login{
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: white;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+.btn-login:hover{
+    background-color: white;
+    color: gray;
+}
+.navigation a::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: aliceblue;
+    border-radius: 5px;
+    left: 0;
+    bottom: -6px;
+    transform: scaleX(0);
+    transition: .5s;
+    transform-origin: right;
+
+}
+.navigation a:hover::after{
+    transform-origin: left;
+    transform: scaleX(1);
+}
+.wraper{
+    overflow: hidden;
+    color: white;
+    margin-top: 7%;
+    margin-right:20%;
+    position: relative;
+    width: 400px;
+    height: 440px;
+    background: transparent;
+    border: 2px solid rgb(226, 224, 224);
+    border-radius: 20px;
+    backdrop-filter: blur(17px);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transition: .4s;
+}
+.wraper.active-popup{
+    transform: scale(1);
+}
+.form-box{
+    width: 100%;
+    padding: 40px;
+
+}
+.form-box h2{
+    font-size: 2em;
+    text-align: center;
+}
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+    margin-bottom: 30px 0;
+
+}
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s
+}
+.input-box input:focus~label{
+    top: 9px;
+}
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    font-size: 1em;
+    font-weight: 400;
+    padding: 0 35px 0 5px;
+    outline: none;
+}
+.input-box .icon{
+    position: absolute;
+    right: 0px;
+    font-size: 1.2em;
+    line-height: 57px;
+}
+
+
+.remember-forgot{
+    font-size: .9rem;
+    color: white;
+    font-weight: 500;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+.remember-forgot label input{
+    accent-color: rgb(124, 118, 118);
+}
+.remember-forgot a{
+    color: aliceblue;
+    text-decoration: none;
+
+}
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+/* From Uiverse.io by alexreyes091 */ 
+.btn {
+    padding: 1rem 2rem;
+    font-weight: 700;
+    background: rgb(255, 255, 255);
+    color: blueviolet;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    border-bottom: 2px solid blueviolet;
+    border-right: 2px solid blueviolet;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    transition-duration: 1s;
+    transition-property: border-top, border-left, border-bottom, border-right,
+      box-shadow;
+  }
+  
+  .btn:hover {
+    border-top: 2px solid blueviolet;
+    border-left: 2px solid blueviolet;
+    border-bottom: 2px solid rgb(238, 103, 238);
+    border-right: 2px solid rgb(238, 103, 238);
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px,
+      rgba(240, 46, 170, 0.2) 15px 15px;
+  }
+  
+.login-register{
+    font-size: .9rem;
+    text-align: center;
+    color: aliceblue;
+    font-weight: 500;
+    margin: 25px 0 15px;
+
+}
+.login-register p a{
+    color: aliceblue;
+    text-decoration: none;
+    font-weight: 400;
+}
+.login-register p a:hover{
+    text-decoration: underline;
+}
+.wraper .icon-close{
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0%;
+    width: 45px;
+    height: 45px;
+    background-color: #162938;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:0 4px 0 4px ;
+}

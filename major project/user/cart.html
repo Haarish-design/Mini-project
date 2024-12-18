@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce</title>
+
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: "Poppins", serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    background-color: rgb(83, 71, 255);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    background-color: rgb(0, 0, 0);
+    background-image: url(pexels-ash-craig-122861-376464.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+.nav {
+    max-width: 1200px;
+    height: 50px;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 500px;
+    text-transform: uppercase;
+    color: aliceblue;
+    text-decoration: none;
+}
+
+.box {
+    color: white;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 4rem;
+    margin: auto;
+}
+
+#cart-icon {
+    position: absolute;
+    font-size: 2rem;
+    cursor: pointer;
+    padding-top: -5 px;
+    transition: .5s;
+}
+
+#cart-icon:hover {
+    font-size: 2.5rem;
+    color: rgb(26, 255, 0);
+}
+
+img {
+    width: 100%;
+}
+
+h2.title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: rgb(0, 0, 0);
+}
+
+.shop-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.i-box {
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 1px 4px rgb(49, 45, 45);
+    position: relative;
+    transition: .5s;
+    text-transform: uppercase;
+}
+
+.i-box:hover {
+    background-color: rgb(143, 143, 143);
+    color: white;
+}
+
+.pic {
+    overflow: hidden;
+}
+
+.pic:hover img {
+    transform: scale(1.5);
+}
+
+.i-img {
+    transition: .6s;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.i-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(255, 0, 0);
+    transition: .5s;
+}
+
+.i-box:hover>.i-title {
+    color: rgb(9, 255, 0);
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+#search {
+    justify-self: flex-end;
+    position: relative;
+    margin: 10px;
+    height: 35px;
+    border: 1px solid;
+}
+
+#search::placeholder {
+    padding-top: 1px;
+    padding-left: 24px;
+    color: rgb(125, 125, 125);
+    font-size: 17px;
+}
+
+#s-btn {
+
+    font-size: 17px;
+    color: rgb(96, 95, 95);
+    position: absolute;
+    right: 220px;
+    top: 83px;
+    z-index: 100;
+    border: none;
+}
+
+.i-price {
+    font-weight: 500;
+}
+
+.add-cart {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: rgb(17, 255, 0);
+    padding: 10px;
+    color: rgb(0, 0, 0);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.add-cart:hover {
+    background-color: rgb(242, 255, 0);
+    color: black;
+}
+
+.cart {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 400px;
+    height: 100vh;
+    background-color: aliceblue;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    box-shadow: 0 1px 4px black;
+    z-index: 100;
+    transition: 0.5s;
+}
+
+.cart-active {
+    right: 0;
+    transition: 0.5s;
+}
+
+.cart-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgb(160, 159, 159);
+    padding-bottom: 20px;
+}
+
+.cart-box {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 32%;
+    column-gap: 1rem;
+    margin-top: 1rem;
+    border-bottom: 1px solid rgb(106, 106, 106);
+    padding-bottom: 1.5rem;
+}
+
+.cart-img {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border: 1px solid rgb(76, 76, 76);
+    padding: 5px;
+}
+
+.detail-box {
+    display: grid;
+    row-gap: 1.5rem;
+}
+
+.price-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-i-title {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: crimson;
+
+}
+
+.cart-price {
+    font-weight: 600;
+}
+
+.cart-quandity {
+    border: 1px solid black;
+    outline: none;
+    text-align: center;
+    width: 2.4rem;
+    font-size: 1rem;
+}
+
+.cart-remove {
+    font-size: 1.5rem;
+    color: rgb(0, 36, 80);
+    cursor: pointer;
+}
+
+.cart-remove:hover {
+    color: red;
+}
+
+.total {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+.total-title {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.total-price {
+    margin-left: .7rem;
+}
+
+.btn-buy {
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    background-color: black;
+    color: rgb(255, 255, 255);
+    margin: 10px;
+    padding: 12px 20px;
+    transition: .5s linear;
+}
+
+.btn-buy:hover {
+    color: black;
+    background-color: #fff;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+#cart-close {
+    position: absolute;
+    top: 1rem;
+    right: .8rem;
+    cursor: pointer;
+    font-size: 2rem;
+    transition: .3s linear;
+}
+
+#cart-close:hover {
+    background-color: black;
+    color: #fff;
+    border-radius: 10px;
+}
+
+input{
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 20px;
+}
+input:focus{
+    border: none;
+    outline: none;
+}
+#add{
+    width: 70px;
+    height: 40px;
+    background-color: aliceblue;
+    border:none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: .4s ease-out;
+}
+#add:hover{
+    color: white;
+    background-color: black;
+}
+</style>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+<body>
+    <header>
+        <div class="nav">
+            <a href="#" class="logo">
+                E-COMMERCE
+               </a>
+            <div class="box">
+
+                <ion-icon name="cart" id="cart-icon"></ion-icon>
+            </div>
+            <div class="cart ">
+                <div class="cart-title">Cart Items</div>
+                <div class="cart-content">
+                </div>
+
+               <a href="payment.html"><button class="btn-buy">Place Order</button></a> 
+                <ion-icon name="close" id="cart-close"></ion-icon>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="menu">
+            <h2 class="title">Discover the Best Items</h2>
+           <input type="text" name="" id="a-i" placeholder="Item name" >
+           <input type="number" name="" id="a-n" placeholder="Item Cost" >
+           <input type="file" name="" id="a-img" placeholder="Item Img" >
+           <button id="add">ADD</button>
+        </div>
+
+        <div class="shop-content">
+
+
+            <div class="i-box">
+                <div class="pic">
+                    <img src="bruno-van-der-kraan-VRERJ5Mjp4c-unsplash.jpg" alt="" class="i-img">
+                </div>
+                <h2 class="i-title">shoe</h2>
+                <span class="i-price">$250</span>
+                <ion-icon name="cart" class="add-cart"></ion-icon>
+            </div>
+
+            <div class="i-box" >
+                <div class="pic">
+                    <img src="linda-xu-fUEP0djb1hA-unsplash.jpg" alt="" class="i-img">
+                </div>
+                <h2 class="i-title">Smart watch</h2>
+                <span class="i-price">$300</span>
+                <ion-icon name="cart" class="add-cart"></ion-icon>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script >
+        
+const btncart = document.querySelector('#cart-icon');
+const cart = document.querySelector('.cart');
+const btnclose = document.querySelector('#cart-close');
+btncart.addEventListener('click', () => {
+    cart.classList.add('cart-active')
+});
+btnclose.addEventListener('click', () => {
+    cart.classList.remove("cart-active")
+});
+const doc = document;
+doc.addEventListener('DOMContentLoaded', loadfood);
+function loadfood() {
+    loadcontent();
+
+}
+function loadcontent() {
+    let btnremove = document.querySelectorAll('.cart-remove');
+    btnremove.forEach(btn => {
+        btn.addEventListener('click', removeitem);
+    });
+    const cartQuan = document.querySelectorAll('.cart-quandity');
+    cartQuan.forEach(btn => {
+        btn.addEventListener('change', cartq)
+    });
+    const cartadditems = document.querySelectorAll(".add-cart");
+    cartadditems.forEach((btn) => {
+        btn.addEventListener('click', addcart);
+    });
+    
+
+    
+} 
+function removeitem() {
+    if (confirm("Are you Sure to remove the items")) {
+
+        this.parentElement.remove();
+    }
+
+}
+
+function cartq() {
+    if (isNaN(this.value) || this.value < 1) {
+        this.value = 1;
+    }
+}
+
+function addcart() {
+    let food = this.parentElement;
+    let title = food.querySelector('.i-title').innerHTML;
+    let price = food.querySelector('.i-price').innerHTML;
+    let img = food.querySelector('.i-img').src;
+   
+
+    let newcart = additems(title, price, img);
+
+    let cartcon = document.querySelector('.cart-content');
+
+    let element = document.createElement('div');
+    element.innerHTML = newcart;
+    cartcon.append(element);
+    loadcontent();
+}
+
+function additems(title, price, img) {
+    return `        <div class="cart-box">
+                        <img src="${img}" alt="" class="cart-img">
+                        <div class="detail-box">
+                            <div class="card-i-title">${title}</div>
+                            <div class="price-box">
+                                <div class="cart-price">${price}</div>
+                                
+                            </div>
+                            <input type="number" value="1" class="cart-quandity">
+                        </div>
+                        <ion-icon name="trash" class="cart-remove"></ion-icon>
+                    </div>`
+}
+
+
+const add=document.querySelector('#add');
+const ai=document.querySelector('#a-i');
+const an=document.querySelector('#a-n');
+const am=document.querySelector('#a-img');
+add.addEventListener('click',()=>{
+    const img=am.value
+    const nam=ai.value
+    const ac=an.value
+    if(img==null||nam=="")
+        {
+        alert("Please enter data");
+    }else{
+    let newi = `
+          <div class="i-box">
+                <div class="pic">
+                    <img src="${img}" alt="" class="i-img">
+                </div>
+                <h2 class="i-title">${nam}</h2>
+                <span class="i-price">${ac}</span>
+                <ion-icon name="cart" class="add-cart"></ion-icon>
+            </div>
+    `
+    let cartcon = document.querySelector('.shop-content');
+
+    let element = document.createElement('div');
+    element.innerHTML = newi;
+    cartcon.append(element);}
+});
+
+    </script>
+
+
+</html>

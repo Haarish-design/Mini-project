@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logout | E-commerce</title>
+  <style>
+    /* General Reset */
+body, h1, p {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  box-sizing: border-box;
+}
+
+/* Background and Centering */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #007bff, #6c757d);
+  color: #333;
+}
+
+/* Logout Container */
+.logout-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Headings and Text */
+.logout-card h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.logout-card p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Logout Button */
+.btn-logout {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+}
+
+.btn-logout:hover {
+  background: #a71d2a;
+  color: #fff;
+}
+
+/* Cancel Button */
+.btn-cancel {
+  background: #6c757d;
+  color: #fff;
+  border: none;
+}
+
+.btn-cancel:hover {
+  background: #4e555b;
+  color: #fff;
+}
+
+  </style>
+</head>
+<body>
+  <div class="logout-container">
+    <div class="logout-card">
+      <h1>Are you sure you want to log out?</h1>
+      <p>You will be logged out from your account. Make sure to save your work before proceeding.</p>
+      <div class="button-group">
+        <a href="login.html" class="btn btn-logout">Logout</a>
+        <a href="dashboard.html" class="btn btn-cancel">Cancel</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

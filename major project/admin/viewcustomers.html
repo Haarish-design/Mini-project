@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custumer List</title>
+    <link rel="stylesheet" href="c-list.css">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+        user-select: none;
+        font-family: "Poppins", serif;
+        font-weight: 400;
+        font-style: normal; 
+        box-sizing: border-box;
+}
+header{
+    background-color: black;
+    height: 50px;
+    width: 100vw;
+    color: white;
+    padding-left: 20px;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.in{
+    display:flex;
+    width:70vw;
+    height: 40px;
+    justify-content: space-around;
+}
+input{
+    border: none;
+    box-shadow: 2px 2px 3px ;
+    background-color: rgb(238, 238, 238);
+    border-radius: 5px;
+}
+input::placeholder{
+    padding-left: 5px;
+    text-transform: uppercase;
+}
+input:focus{
+    outline: none;
+}
+.TAB{
+    margin-top: 60px;
+    margin-left: 400px;
+
+    width: 500px;
+}
+tr:first-child{
+
+    background-color: blueviolet;
+}
+th{
+    /* border: 2px solid black; */
+    width:calc(700px*3);
+    text-align: center;
+    color:white;
+    font-weight: 500;
+    font-size: 16px;
+}
+td{
+    width:calc(700px*3);
+    text-align: center;
+    color:rgb(0, 0, 0);
+    font-weight: 500;
+    font-size: 16px;
+    padding-top:13px;
+}
+tr{
+    background-color: aliceblue;
+    text-align: center;
+    height: 50px;
+}
+tr:nth-of-type(even){
+    background-color: rgb(219, 180, 255);
+}
+button{
+    width: 60px;
+    border: none;
+    background-color: black;
+    color:white;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all .4s ease-in-out;
+}
+button:hover{
+    background-color: white;
+    color: black;
+    border: 2px solid;
+    cursor:pointer;
+}
+</style>
+<body>
+    <header>
+        Custumer List
+    </header>
+    <div class="con">
+        <div class="in">
+            <input type="text" name="" id="" class="i-n" placeholder="Custumer name">
+            <input type="text" name="" id="" class="i-p" placeholder="purchased item">
+            <input type="date" name="" id="" class="i-d" >
+            <button id="btn">ADD</button>
+        </div>
+        <div class="TAB">
+
+            <table cellpadding="10px">
+                <tr>
+                    <th>Name</th>
+                    <th>purchased item</th>
+                    <th>Date of purchased</th>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</body>
+<script >
+    const tab=document.querySelector('.TAB');
+const btn=document.querySelector('#btn');
+btn.addEventListener('click',()=>{
+    let na=document.querySelector('.i-n').value;
+    let pur=document.querySelector('.i-p').value;
+    let date=String(document.querySelector('.i-d').value);
+    if(na!=''&&pur!=""&&date!=""){
+    let newl=`
+    <td>${na}</td>
+    <td>${pur}</td>
+    <td>${date}</td>
+    `
+    let e=document.createElement('tr');
+    e.innerHTML=newl;
+    tab.appendChild(e);
+}else{
+    alert("Please enter the data");
+}
+});
+
+</script>
+</html>
